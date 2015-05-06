@@ -1,5 +1,5 @@
 var express = require('express');
-//var cool = require('cool-ascii-faces');
+var cool = require('cool-ascii-faces');
 var pg = require('pg');
 var app = express();
 var path  = require('path');
@@ -7,12 +7,11 @@ var path  = require('path');
 var dbURL = "postgres://rpfdcadokaxnvb:B7AFleOzmHR3dRLa4qWV0n4XjA@ec2-54-163-227-94.compute-1.amazonaws.com:5432/d8t4juohs69msb";
 var appPath = "/app/www-data/"
 app.set('port', (process.env.PORT || 5000));
-console.log('eyo')
-console.log(__dirname + appPath + 'static')
+
 app.use('/static', express.static(__dirname + appPath + 'static'));
 
-app.get('/', function(request, response) {
-  response.sendFile(path.join(__dirname + appPath + 'views/index.html'));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + appPath + 'views/index.html'));
 });
 
 
