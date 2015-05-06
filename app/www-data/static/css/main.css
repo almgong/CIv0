@@ -1,0 +1,17 @@
+/* Main CSS */
+ .main-wrapper {
+ 	width:80%;
+ 	height:1000px;
+ 	margin: 10% auto;
+ 	outline : 1px solid black;
+ }
+ .CI-brand {
+ 	position:absolute;
+ 	left:15px;
+ 	right:15px;
+ 	top:15px;
+ 	text-align:center;
+ }
+ .CI-brand .navbar-brand {
+ 	float:none;
+ }
