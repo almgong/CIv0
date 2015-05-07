@@ -19,7 +19,22 @@
  }
 
 
-
+/** main dashboard **/
+.user-profile {
+	text-align:center;
+}
+.user-img {
+	width:65%;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+.user-img i {
+	border:1px solid #d3d3d3;
+}
+.content-label {
+	text-align: center;
+}
  /** footer **/
  footer {
  	text-align:center;

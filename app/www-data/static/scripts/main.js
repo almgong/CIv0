@@ -15,6 +15,8 @@ requirejs.config({
 require(['jquery', 'bb'], function($, BB) {
 	require(['bootstrap', 'appViews'], function(bt, appViews) {
 
+		window.location.localStorage = {}; //for storage of client side utilities
+
 		// BACKBONE APP
 		var MainApp = Backbone.Router.extend({
 			routes: {

@@ -14,6 +14,9 @@ define([
 				success:function(data) {
 					//console.log(this.$el)
 					self.$el.html(data);
+					$('.login').on('click', function() {
+						loadMainPageViews();
+					});
 				},
 				error:function() {
 					console.log('error')

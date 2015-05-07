@@ -17,23 +17,25 @@ var dbURL = "postgres://rpfdcadokaxnvb:B7AFleOzmHR3dRLa4qWV0n4XjA@ec2-54-163-227
 app.set('port', (process.env.PORT || 5000));
 
 app.use('/static', express.static(__dirname + appPath + 'static'));
-
+var auth = false;
 /** default landing **/
 app.get('/', function(req, res) {
   //res.sendFile(path.join(__dirname + appPath + 'views/index.html'));
-  var auth = false;
   res.render(path.join(__dirname + appPath + 'views/index.html'), {content:"loading..."});
 });
 
 /** for populating the landing page **/
 app.get('/main', function(req, res) {
-  var auth = false;
+  //console.log(req.body.params)
   if(auth) {
-
+    res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), {title:"hello world"})
   }
   else {
     res.render(path.join(__dirname + appPath + 'views/includes/main_intro.html'), {title:"hello world"});
   }
+
+  auth = true;
+  setTimeout(function(){auth=false;}, 6000);//ten minute timeout
 });
 
 
