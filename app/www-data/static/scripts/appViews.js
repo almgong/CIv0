@@ -5,7 +5,7 @@ define([
 	var appPath = "/app/www-data/";
 
 	var LandingPage = Backbone.View.extend({
-		el: $('#landing-page'),
+		el: $('#main'),
 		render:function() {
 			var self = this;
 			$.ajax({

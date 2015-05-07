@@ -13,14 +13,22 @@ html, body {
  	position:absolute;
  	left:15px;
  	right:15px;
- 	top:15px;
+ 	top:5px;
  	text-align:center;
  	z-index:0;
  }
  .CI-brand .navbar-brand {
  	float:none;
  }
-
+.navbar-brand img {
+	display:inline-block;
+}
+#logo {
+	height:40px;
+	width: 40px;
+	position:relative;
+	bottom:2px;
+}
 
 /** main dashboard **/
 .user-profile {
@@ -45,6 +53,24 @@ html, body {
 }
 .panel-footer {
 	text-align:right;
+}
+.panel-title {
+	overflow:hidden;
+}
+#add-chime {
+	padding:5px;
+	border-radius:5px;
+	border:1px solid #d3d3d3;
+}
+#add-chime form {
+	display:none;
+}
+#add-chime #description {
+	min-height:50px;
+	width:100%;
+}
+.add-chime-dropdown {
+	cursor:pointer;
 }
  /** footer **/
  footer {

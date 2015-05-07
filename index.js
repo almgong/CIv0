@@ -55,14 +55,17 @@ app.listen(app.get('port'), function() {
 
 
 
-
-
-
 app.get('/db', function (request, response) {
-  pg.connect(dbURL, function(err, client, done) {
-    console.log(process.env.DATABASE_URL)
-  	//console.log(err)
-  	//console.log(client)
+  var client = new pg.Client({
+    user: "rpfdcadokaxnvb",
+    password: "B7AFleOzmHR3dRLa4qWV0n4XjA",
+    database: "d8t4juohs69msb",
+    port: 5432,
+    host: "ec2-54-163-227-94.compute-1.amazonaws.com",
+    ssl: true
+  });
+
+  client.connect(function(err) {
   	
   	/*client = new pg.Client({
   		"user":"rpfdcadokaxnvb",
@@ -74,11 +77,12 @@ app.get('/db', function (request, response) {
   	});*/
 
     client.query('SELECT * FROM test_table', function(err, result) {
-      done();
+      console.log('got here')
+
       if (err)
-       { console.error(err); response.send("Error " + err); }
+       { console.error(err); response.send("Error " + err); client.end();}
       else
-       { response.send(result.rows); }
+       { response.send(result.rows); client.end();}
     });
   });
 })

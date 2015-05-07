@@ -4,7 +4,8 @@ requirejs.config({
 		jquery: 'jquery-2.1.4.min',
 		bb: 'backbone-min',
 		bootstrap: 'bootstrap.min',
-		appViews: '../appViews'
+		appViews: '../appViews',
+		autogrow: 'autogrow'
 	}
 
 });
