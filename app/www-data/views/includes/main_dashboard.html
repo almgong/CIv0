@@ -29,22 +29,109 @@
 		  <!-- Tab panes -->
 		  <div class="tab-content">
 		    <div role="tabpanel" class="tab-pane active in fade" id="my-chimes">
-		    
+		    	
 		    	<% _.each(chimes, function(chime) { %>
+		    		<% console.log(chime) %>
 		    		<div class="panel panel-default">
 					  <div class="panel-heading">
-					    <h3 class="panel-title">Panel title</h3>
+					    <h3 class="panel-title">
+					    	Heading over to <%= chime.title %>
+					    	<span class="panel-date pull-right">
+					    		<%= chime.time + ', ' + chime.date %>
+					    	</span>
+					    </h3>
 					  </div>
 					  <div class="panel-body">
-					    Panel content
+					    <%= chime.description %>
+					  </div>
+
+					  <div class="panel-footer">
+					  	<div class="join-chime">
+					  		<button>Join</button>
+					  	</div>
 					  </div>
 					</div>
 		    	<% }); %>
 
 		    </div>
-		    <div role="tabpanel" class="tab-pane fade" id="friends">Friend's chimes</div>
-		    <div role="tabpanel" class="tab-pane fade" id="attending">Chimes attending</div>
-		    <div role="tabpanel" class="tab-pane fade" id="near">Nearby</div>
+		    <div role="tabpanel" class="tab-pane fade" id="friends">
+
+		    	<% _.each(chimes, function(chime) { %>
+		    		<% console.log(chime) %>
+		    		<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">
+					    	Heading over to <%= chime.title %>
+					    	<span class="panel-date pull-right">
+					    		<%= chime.time + ', ' + chime.date %>
+					    	</span>
+					    </h3>
+					  </div>
+					  <div class="panel-body">
+					    <%= chime.description %>
+					  </div>
+
+					  <div class="panel-footer">
+					  	<div class="join-chime">
+					  		<button>Join</button>
+					  	</div>
+					  </div>
+					</div>
+		    	<% }); %>
+
+		    </div>
+		    <div role="tabpanel" class="tab-pane fade" id="attending">
+
+		    	<% _.each(chimes, function(chime) { %>
+		    		<% console.log(chime) %>
+		    		<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">
+					    	Heading over to <%= chime.title %>
+					    	<span class="panel-date pull-right">
+					    		<%= chime.time + ', ' + chime.date %>
+					    	</span>
+					    </h3>
+					  </div>
+					  <div class="panel-body">
+					    <%= chime.description %>
+					  </div>
+
+					  <div class="panel-footer">
+					  	<div class="join-chime">
+					  		<button>Join</button>
+					  	</div>
+					  </div>
+					</div>
+		    	<% }); %>
+
+		    </div>
+		    <div role="tabpanel" class="tab-pane fade" id="near">
+
+		    	<% _.each(chimes, function(chime) { %>
+		    		<% console.log(chime) %>
+		    		<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">
+					    	Heading over to <%= chime.title %>
+					    	<span class="panel-date pull-right">
+					    		<%= chime.time + ', ' + chime.date %>
+					    	</span>
+					    </h3>
+					  </div>
+					  <div class="panel-body">
+					    <%= chime.description %>
+					  </div>
+
+					  <div class="panel-footer">
+					  	<div class="join-chime">
+					  		<button>Join</button>
+					  	</div>
+					  </div>
+					</div>
+		    	<% }); %>
+		    	
+		    </div>
 		  </div>
 
 		</div>

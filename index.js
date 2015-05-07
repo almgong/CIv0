@@ -34,7 +34,7 @@ app.get('/main', function(req, res) {
       if (err) throw err;
       obj = JSON.parse(data);
       console.log(obj)
-      res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), {chimes:data})
+      res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), { "chimes":obj });
     });
   }
   else {

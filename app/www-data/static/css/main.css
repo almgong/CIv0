@@ -43,6 +43,9 @@ html, body {
 .user-stats ul {
 	list-style:none;
 }
+.panel-footer {
+	text-align:right;
+}
  /** footer **/
  footer {
  	text-align:center;
