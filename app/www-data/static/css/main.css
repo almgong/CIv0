@@ -1,9 +1,10 @@
 /* Main CSS */
  .main-wrapper {
- 	width:80%;
- 	height:1000px;
+ 	width:100%;
  	margin: 10% auto;
- 	outline : 1px solid black;
+ }
+ .navbar-toggle {
+ 	z-index:1;
  }
  .CI-brand {
  	position:absolute;
@@ -11,7 +12,15 @@
  	right:15px;
  	top:15px;
  	text-align:center;
+ 	z-index:0;
  }
  .CI-brand .navbar-brand {
  	float:none;
+ }
+
+
+
+ /** footer **/
+ footer {
+ 	text-align:center;
  }

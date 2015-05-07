@@ -15,29 +15,50 @@ requirejs.config({
 require(['jquery', 'bb'], function($, BB) {
 	require(['bootstrap', 'appViews'], function(bt, appViews) {
 
-		appViews.loadMainPageViews();
-
 		// BACKBONE APP
 		var MainApp = Backbone.Router.extend({
 			routes: {
-				"/": "index" //landing page
+				"/": "index", //landing page
+				"/main": "authenticatedIndex", 				//user logged in successfully
+				"/main/:next": "authenticatedIndexRedirect"	//logged in, with redirect
 			},
 
-			index : function() {
+			index:function() {
 				console.log('landing page')
+			},
+			authenticatedIndex:function() {
+				console.log('logged in')
+			},
+			authenticatedIndexRedirect:function(next) {
+				console.log('nice, now go to' + next)
 			}
 
 		});
 		
 		var app = new MainApp() // our app
-		
 
 		/***
-		 * NAVIGATION
+		 * On Page Load
 		 ***/
-		$('.navbar-brand').on('click', function() {
-			app.navigate("/", {trigger:true})
-		});
+		 $(function() {
+		 	appViews.loadMainPageViews();
+
+
+			/***
+			* NAVIGATION
+			***/
+			$('.navbar-brand').on('click', function() {
+				console.log('eyyy')
+				app.navigate("/", {trigger:true})
+			});
+
+			$('a.login').on('click', function() {
+				console.log('eyyy')
+				app.navigate("/main", {trigger:true});
+			});
+
+
+		 });
 
 	});
 });

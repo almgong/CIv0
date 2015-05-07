@@ -1,20 +1,40 @@
+var appPath = "/app/www-data/";
 var express = require('express');
 var cool = require('cool-ascii-faces');
 var pg = require('pg');
 var app = express();
 var path  = require('path');
 
+//set up underscore + html rendering
+var cons = require('consolidate');
+app.engine('html', cons.underscore);
+app.set('view engine', 'html');
+app.set('views', path.join(__dirname, appPath + 'views'));
+var __ = require('underscore'); //two underscores
+
+
 var dbURL = "postgres://rpfdcadokaxnvb:B7AFleOzmHR3dRLa4qWV0n4XjA@ec2-54-163-227-94.compute-1.amazonaws.com:5432/d8t4juohs69msb";
-var appPath = "/app/www-data/"
 app.set('port', (process.env.PORT || 5000));
 
 app.use('/static', express.static(__dirname + appPath + 'static'));
 
+/** default landing **/
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + appPath + 'views/index.html'));
+  //res.sendFile(path.join(__dirname + appPath + 'views/index.html'));
+  var auth = false;
+  res.render(path.join(__dirname + appPath + 'views/index.html'), {content:"loading..."});
 });
 
+/** for populating the landing page **/
+app.get('/main', function(req, res) {
+  var auth = false;
+  if(auth) {
 
+  }
+  else {
+    res.render(path.join(__dirname + appPath + 'views/includes/main_intro.html'), {title:"hello world"});
+  }
+});
 
 
 
