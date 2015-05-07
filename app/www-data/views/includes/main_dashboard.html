@@ -6,6 +6,12 @@
 		<div class="user-name">
 			Bill Billiams III
 		</div>
+	</div> <br />
+	<div class="row user-stats">
+		<ul>
+			<li>Total Chimes: 487</li>
+			<li>Chimes Attended: 236</li>
+		</ul>
 	</div>
 </div>
 
@@ -14,18 +20,31 @@
 
 		  <!-- Nav tabs -->
 		  <ul class="nav nav-tabs" role="tablist">
-		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">My chimes</a></li>
-		    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Chimes attending</a></li>
-		    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Friend's</a></li>
-		    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Nearby</a></li>
+		    <li role="presentation" class="active"><a href="#my-chimes" aria-controls="my-chimes" role="tab" data-toggle="tab">My chimes</a></li>
+		    <li role="presentation"><a href="#attending" aria-controls="attending" role="tab" data-toggle="tab">Chimes attending</a></li>
+		    <li role="presentation"><a href="#friends" aria-controls="friends" role="tab" data-toggle="tab">Friend's</a></li>
+		    <li role="presentation"><a href="#near" aria-controls="near" role="tab" data-toggle="tab">Nearby</a></li>
 		  </ul>
 
 		  <!-- Tab panes -->
 		  <div class="tab-content">
-		    <div role="tabpanel" class="tab-pane active in fade" id="home">My chimes</div>
-		    <div role="tabpanel" class="tab-pane" id="profile fade">Friend's chimes</div>
-		    <div role="tabpanel" class="tab-pane" id="messages fade">Chimes attending</div>
-		    <div role="tabpanel" class="tab-pane" id="settings fade">Nearby</div>
+		    <div role="tabpanel" class="tab-pane active in fade" id="my-chimes">
+		    
+		    	<% _.each(chimes, function(chime) { %>
+		    		<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Panel title</h3>
+					  </div>
+					  <div class="panel-body">
+					    Panel content
+					  </div>
+					</div>
+		    	<% }); %>
+
+		    </div>
+		    <div role="tabpanel" class="tab-pane fade" id="friends">Friend's chimes</div>
+		    <div role="tabpanel" class="tab-pane fade" id="attending">Chimes attending</div>
+		    <div role="tabpanel" class="tab-pane fade" id="near">Nearby</div>
 		  </div>
 
 		</div>
@@ -37,11 +56,11 @@
 <div class="col-sm-3">
 	<div class="row">
 		<div class="content-label row">
-			Search Chimes
+			<h4>Search Chimes</h4>
 		</div>
 		<div class="search-area">
 		    <div class="input-group">
-		      <input type="text" class="form-control" placeholder="Search for...">
+		      <input type="text" class="form-control" placeholder="Search...">
 		      <span class="input-group-btn">
 		        <button class="btn btn-default" type="button">Search</button>
 		      </span>
@@ -53,11 +72,6 @@
 
 <script type="text/javascript">
 $(function() {
-	$('#myTab a').click(function (e) {
-	  e.preventDefault()
-	  $(this).tab('show')
-	});
-
 
 });
 </script>

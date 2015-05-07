@@ -1,4 +1,7 @@
 /* Main CSS */
+html, body {
+	font-family:verdana;
+}
  .main-wrapper {
  	width:100%;
  	margin: 10% auto;
@@ -34,6 +37,11 @@
 }
 .content-label {
 	text-align: center;
+	font-family:Verdana;
+
+}
+.user-stats ul {
+	list-style:none;
 }
  /** footer **/
  footer {

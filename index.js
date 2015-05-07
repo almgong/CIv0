@@ -4,6 +4,7 @@ var cool = require('cool-ascii-faces');
 var pg = require('pg');
 var app = express();
 var path  = require('path');
+var fs = require('fs');
 
 //set up underscore + html rendering
 var cons = require('consolidate');
@@ -28,14 +29,20 @@ app.get('/', function(req, res) {
 app.get('/main', function(req, res) {
   //console.log(req.body.params)
   if(auth) {
-    res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), {title:"hello world"})
+    var obj;
+    fs.readFile('test_files/MOCK_DATA.json', 'utf8', function (err, data) {
+      if (err) throw err;
+      obj = JSON.parse(data);
+      console.log(obj)
+      res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), {chimes:data})
+    });
   }
   else {
     res.render(path.join(__dirname + appPath + 'views/includes/main_intro.html'), {title:"hello world"});
   }
 
   auth = true;
-  setTimeout(function(){auth=false;}, 6000);//ten minute timeout
+  setTimeout(function(){auth=false;}, 300000);//ten minute timeout
 });
 
 
