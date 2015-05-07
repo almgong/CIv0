@@ -33,7 +33,6 @@ app.get('/main', function(req, res) {
     fs.readFile('test_files/MOCK_DATA.json', 'utf8', function (err, data) {
       if (err) throw err;
       obj = JSON.parse(data);
-      console.log(obj)
       res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), { "chimes":obj });
     });
   }
