@@ -2,8 +2,7 @@ define([
 	'bb',
 	'apiClient',
 	'text!../templates/main_dashboard.template.html',
-	'text!../templates/main_intro.template.html',
-
+	'text!../templates/main_intro.template.html'
 	], function(Backbone, api, dashboardHTMl, introHTML) {
 
 	var LandingPage = Backbone.View.extend({
@@ -27,6 +26,8 @@ define([
 						api.login(loadMainPageViews);
 					});
 
+					bindDashboardEvents();
+
 				},
 				error:function() {
 					console.log('error')
@@ -36,6 +37,21 @@ define([
 	});
 
 
+
+	// helper functions //
+
+	var bindDashboardEvents = function() {
+		var addChimeForm = $('#add-chim-form');
+		$('.add-chime').on('click', function() {
+			var fields = {
+				"title": $('#title').val(),
+				"time": $('#time').val(),
+				"description": $('#description').val()
+			};
+
+			api.addNewChime(fields);
+		});
+	};
 
 
 	var loadMainPageViews = function() {

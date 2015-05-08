@@ -6,6 +6,7 @@ requirejs.config({
 		bootstrap: 'bootstrap.min',
 		appViews: '../appViews',
 		apiClient: '../apiClient',
+		addChime: '../addChime',
 		autogrow: 'autogrow'
 	}
 

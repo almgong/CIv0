@@ -21,11 +21,29 @@ var login = function(callback) {
 	});
 };
 
+//data = { time: [] , title:[], description:[], ... }
+var addNewChime = function(data) {
+	console.log(data)
 
+	$.ajax({
+		method: "POST",
+		url:'/add_chime',
+		data:data,
+		success:function(data) {
+			console.log(data)
+			console.log('succs')
+		},
+		error:function() {
+			console.log('error')
+		}
+	});
+
+};
 
 return {
 	test:test,
-	login:login
+	login:login,
+	addNewChime:addNewChime
 }
 
 
