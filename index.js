@@ -51,21 +51,25 @@ app.post('/login', function(req, res) {
 /** for populating the landing page **/
 app.get('/main', function(req, res) {
   //console.log(req.body.params)
-  if(auth) {
-    var obj;
-    fs.readFile('test_files/MOCK_DATA.json', 'utf8', function (err, data) {
-      if (err) throw err;
-      obj = JSON.parse(data);
-      res.json( { "chimes":obj } );
-      //res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), { "chimes":obj });
-    });
-  }
-  else {
-    res.send(null);
-  }
+  var response = function(chimes) {
+    if(auth) {
+      var obj;
+      fs.readFile('test_files/MOCK_DATA.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        obj = JSON.parse(data);
+        res.json( { "chimes": chimes,"test":obj } );
+        //res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), { "chimes":obj });
+      });
+    }
+    else {
+      res.send(null);
+    }
 
-  auth = true;
-  setTimeout(function(){auth=false;}, 300000);//ten minute timeout
+    auth = true;
+    setTimeout(function(){auth=false;}, 300000);//ten minute timeout
+  };
+
+  controller.getMain(response);
 });
 
 

@@ -20,6 +20,7 @@ var exports = module.exports;
 /**	MODEL FUNCTIONS:
 
 	addChime(data, callback)	//adds a chime with given data params and a callback function
+	getUserChimes
 
 
 **/
@@ -50,8 +51,6 @@ exports.test = function() {
 
 
 exports.addChime = function(data, next) {
-	console.log('in model')
-	console.log(data)
 
 	pg.connect(connString, function(err, client, done) {
 	  if(err) {
@@ -85,15 +84,63 @@ exports.addChime = function(data, next) {
 		    	next(false)
 		      return console.error('error running query', err);
 		    }
-
-		   	console.log('inserted into rings!')
+		    next(true); //success
 	  	});
 
 	    //output: 1
 	  });
 
 	});
-
-
-	next(true);
 };
+
+
+
+exports.getUserChimes = function(user_id, next) {
+
+	var getChimesQuery = ' SELECT * FROM users, chimes, rings where users.id=rings.host and chimes.id=rings.chime';
+
+
+
+	pg.connect(connString, function(err, client, done) {
+	  if(err) {
+	    return console.error('error fetching client from pool', err);
+	  }
+	  
+	  client.query(getChimesQuery, [], function(err, result) {
+	    //call `done()` to release the client back to the pool
+	    done();
+
+	    if(err) {
+	    	next({});
+	      return console.error('error running query', err);
+	    }
+
+	    var data = []
+
+	    for(var i = 0; i < result.rows.length; i++) {
+	    	var curr = {};
+	    	curr.first_name = result.rows[i].first_name;
+	    	curr.last_name = result.rows[i].last_name;
+	    	curr.title = result.rows[i].title;
+	    	curr.time = result.rows[i].time;
+	    	curr.description = result.rows[i].description;
+
+	    	data.unshift(curr);
+	    }
+	   
+	    next(data);
+	    //output: 1
+	  });
+	});
+
+};
+
+
+
+
+
+
+
+
+
+//eo file

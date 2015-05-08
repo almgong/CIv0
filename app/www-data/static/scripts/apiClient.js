@@ -22,7 +22,7 @@ var login = function(callback) {
 };
 
 //data = { time: [] , title:[], description:[], ... }
-var addNewChime = function(data) {
+var addNewChime = function(data, callback) {
 	console.log(data)
 
 	$.ajax({
@@ -32,6 +32,7 @@ var addNewChime = function(data) {
 		success:function(data) {
 			console.log(data)
 			console.log('succs')
+			callback(); //finish add chime logic
 		},
 		error:function() {
 			console.log('error')

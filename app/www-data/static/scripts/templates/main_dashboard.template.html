@@ -52,9 +52,9 @@
 		    		<div class="panel panel-default">
 					  <div class="panel-heading">
 					    <h3 class="panel-title">
-					    	Heading over to <%= chime.title %>
+					    	<%= chime.title %>
 					    	<span class="panel-date pull-right">
-					    		<%= chime.time + ', ' + chime.date %>
+					    		<%= chime.time %>
 					    	</span>
 					    </h3>
 					  </div>
@@ -63,6 +63,9 @@
 					  </div>
 
 					  <div class="panel-footer">
+					  	<div class="chime-author pull-left">
+					  		<i class="fa fa-user"></i> <%= chime.first_name  + ' ' + chime.last_name %> 
+					  	</div>
 					  	<div class="join-chime">
 					  		<button>Join</button>
 					  	</div>
@@ -78,9 +81,9 @@
 		    		<div class="panel panel-default">
 					  <div class="panel-heading">
 					    <h3 class="panel-title">
-					    	Heading over to <%= chime.title %>
+					    	<%= chime.title %>
 					    	<span class="panel-date pull-right">
-					    		<%= chime.time + ', ' + chime.date %>
+					    		<%= chime.time %>
 					    	</span>
 					    </h3>
 					  </div>
@@ -89,6 +92,9 @@
 					  </div>
 
 					  <div class="panel-footer">
+					  	<div class="chime-author pull-left">
+					  		<i class="fa fa-user"></i> <%= chime.first_name  + ' ' + chime.last_name %> 
+					  	</div>
 					  	<div class="join-chime">
 					  		<button>Join</button>
 					  	</div>
@@ -105,9 +111,9 @@
 		    		<div class="panel panel-default">
 					  <div class="panel-heading">
 					    <h3 class="panel-title">
-					    	Heading over to <%= chime.title %>
+					    	<%= chime.title %>
 					    	<span class="panel-date pull-right">
-					    		<%= chime.time + ', ' + chime.date %>
+					    		<%= chime.time %>
 					    	</span>
 					    </h3>
 					  </div>
@@ -116,6 +122,9 @@
 					  </div>
 
 					  <div class="panel-footer">
+					  	<div class="chime-author pull-left">
+					  		<i class="fa fa-user"></i> <%= chime.first_name  + ' ' + chime.last_name %> 
+					  	</div>
 					  	<div class="join-chime">
 					  		<button>Join</button>
 					  	</div>
@@ -148,7 +157,7 @@
 		<div class="content-label">
 			<h4>Chimes you are attending</h4>
 
-			<% _.each(chimes, function(chime) { %>
+			<% _.each(test, function(chime) { %>
 		    		
 		    		<div class="panel panel-default">
 					  <div class="panel-heading">

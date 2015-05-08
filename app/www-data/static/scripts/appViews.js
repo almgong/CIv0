@@ -5,6 +5,8 @@ define([
 	'text!../templates/main_intro.template.html'
 	], function(Backbone, api, dashboardHTMl, introHTML) {
 
+	var landing = null;
+
 	var LandingPage = Backbone.View.extend({
 		el: $('#main'),
 		render:function() {
@@ -13,8 +15,8 @@ define([
 				method: "GET",
 				url:'/main',
 				success:function(data) {
-
-					if(data) {
+					console.log(data);
+					if(data) {	
 						var template = _.template(dashboardHTMl);
 					}
 					else {
@@ -42,6 +44,14 @@ define([
 
 	var bindDashboardEvents = function() {
 		var addChimeForm = $('#add-chim-form');
+
+		var finishAddChime = function() {
+			$('add-chime-dropdown').click();
+			console.log('loadMainPageViews')
+			loadMainPageViews();
+			landing.render();
+		};
+
 		$('.add-chime').on('click', function() {
 			var fields = {
 				"title": $('#title').val(),
@@ -49,7 +59,7 @@ define([
 				"description": $('#description').val()
 			};
 
-			api.addNewChime(fields);
+			api.addNewChime(fields, finishAddChime);
 		});
 	};
 
@@ -58,12 +68,12 @@ define([
 		if(landing) {
 			console.log('destroyView')
 			destroyView(landing);
-			var landing = new LandingPage();
+			landing = new LandingPage();
 		}
 		else {
-			var landing = new LandingPage();
+			landing = new LandingPage();
 		}
-
+		window.x = landing;
 		landing.render();
 		console.log('main page loaded');
 	};
@@ -76,10 +86,11 @@ define([
 	    view.undelegateEvents();
 
 	    view.$el.removeData().unbind(); 
+	    view.$el.empty();
 
 	    // Remove view from DOM
-	    view.remove();  
-	    Backbone.View.prototype.remove.call(view);
+	    //view.remove();  
+	    //Backbone.View.prototype.remove.call(view);
 
 	};
 	//api.login(loadMainPageViews);
