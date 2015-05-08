@@ -5,6 +5,7 @@ requirejs.config({
 		bb: 'backbone-min',
 		bootstrap: 'bootstrap.min',
 		appViews: '../appViews',
+		apiClient: '../apiClient',
 		autogrow: 'autogrow'
 	}
 
@@ -16,7 +17,7 @@ requirejs.config({
 require(['jquery', 'bb'], function($, BB) {
 	require(['bootstrap', 'appViews'], function(bt, appViews) {
 
-		window.location.localStorage = {}; //for storage of client side utilities
+		window.localStorage = {}; //for storage of client side utilities
 
 		// BACKBONE APP
 		var MainApp = Backbone.Router.extend({

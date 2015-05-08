@@ -1,8 +1,10 @@
 define([
-	'bb'
-	], function(Backbone) {
+	'bb',
+	'apiClient',
+	'text!../templates/main_dashboard.template.html',
+	'text!../templates/main_intro.template.html',
 
-	var appPath = "/app/www-data/";
+	], function(Backbone, api, dashboardHTMl, introHTML) {
 
 	var LandingPage = Backbone.View.extend({
 		el: $('#main'),
@@ -12,18 +14,29 @@ define([
 				method: "GET",
 				url:'/main',
 				success:function(data) {
-					//console.log(this.$el)
-					self.$el.html(data);
+
+					if(data) {
+						var template = _.template(dashboardHTMl);
+					}
+					else {
+						var template = _.template(introHTML);
+					}
+
+					self.$el.html(template(data));
 					$('.login').on('click', function() {
-						loadMainPageViews();
+						api.login(loadMainPageViews);
 					});
+
 				},
 				error:function() {
 					console.log('error')
 				}
-			})
+			});
 		}
 	});
+
+
+
 
 	var loadMainPageViews = function() {
 		if(landing) {
@@ -53,7 +66,7 @@ define([
 	    Backbone.View.prototype.remove.call(view);
 
 	};
-
+	//api.login(loadMainPageViews);
 	return {
 		loadMainPageViews : loadMainPageViews
 	}

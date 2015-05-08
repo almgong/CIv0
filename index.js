@@ -25,6 +25,13 @@ app.get('/', function(req, res) {
   res.render(path.join(__dirname + appPath + 'views/index.html'), {content:"loading..."});
 });
 
+
+/** login **/
+app.post('/login', function(req, res) {
+  res.send( "you did it");
+});
+
+
 /** for populating the landing page **/
 app.get('/main', function(req, res) {
   //console.log(req.body.params)
@@ -33,17 +40,17 @@ app.get('/main', function(req, res) {
     fs.readFile('test_files/MOCK_DATA.json', 'utf8', function (err, data) {
       if (err) throw err;
       obj = JSON.parse(data);
-      res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), { "chimes":obj });
+      res.json( { "chimes":obj } );
+      //res.render(path.join(__dirname + appPath + 'views/includes/main_dashboard.html'), { "chimes":obj });
     });
   }
   else {
-    res.render(path.join(__dirname + appPath + 'views/includes/main_intro.html'), {title:"hello world"});
+    res.send(null);
   }
 
   auth = true;
   setTimeout(function(){auth=false;}, 300000);//ten minute timeout
 });
-
 
 
 app.listen(app.get('port'), function() {
