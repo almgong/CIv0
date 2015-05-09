@@ -7,7 +7,8 @@ requirejs.config({
 		appViews: '../appViews',
 		apiClient: '../apiClient',
 		addChime: '../addChime',
-		autogrow: 'autogrow'
+		autogrow: 'autogrow',
+		magPopup: 'mag-popup.min'
 	}
 
 });

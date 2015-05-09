@@ -615,7 +615,22 @@ h1.page-header {
 			padding: 10px 0px 9px;
 		}
 	}
+	.info {
+		cursor:pointer;
+	}
 	/**end event list **/
+
+
+/** POPUP **/
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
 
  /** footer **/
  footer {

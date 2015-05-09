@@ -2,8 +2,9 @@ define([
 	'bb',
 	'apiClient',
 	'text!../templates/main_dashboard.template.html',
-	'text!../templates/main_intro.template.html'
-	], function(Backbone, api, dashboardHTMl, introHTML) {
+	'text!../templates/main_intro.template.html',
+	'magPopup'
+	], function(Backbone, api, dashboardHTMl, introHTML, mpopup) {
 
 	var landing = null;
 
@@ -15,7 +16,7 @@ define([
 				method: "GET",
 				url:'/main',
 				success:function(data) {
-					console.log(data);
+					
 					if(data) {	
 						var template = _.template(dashboardHTMl);
 					}
@@ -75,6 +76,13 @@ define([
 	  		$('.side-body').removeClass('body-slide-in');
 	  		$('.search-input').focus();
 	  	});
+
+
+	  	//event list popup
+	  	$('.info').magnificPopup({
+		  type: 'inline'
+		  // other options
+		});
 
 	};
 
