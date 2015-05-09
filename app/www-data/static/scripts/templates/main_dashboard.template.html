@@ -1,5 +1,5 @@
-<div class="dashboard" id="main">
-<div class="col-sm-6 col-sm-offset-2">
+<div class="dashboard" id="main-dashboard">
+<div class="col-sm-8">
 		
 		<div id="add-chime">
 			<h4 class="">
@@ -14,9 +14,31 @@
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="time">Time</label>
+			    <label class="control-label col-sm-2" for="day">Day</label>
 			    <div class="col-sm-10"> 
-			      <input type="text" class="form-control" id="time" placeholder="Time?">
+			    	<% var days = []; %>
+			     	<% var months = ['January', 'Feburary', 'March', 'April', 'May', 'June',
+			     	 'July', 'August', 'September', 'October', 'November', 'December']; %>
+			     	<% for(var i = 1; i < 32; i++) { %>
+			     	<% days.push(i); %>                              
+			     	<% } %>
+
+			     	<select class="form-control" id="day">
+			     		<% _.each(days, function(day) { %>
+					  	<option value="<%= day %>"><%= day %></option>
+					  	<% }); %>
+					
+					</select>
+			    </div>
+			    <label class="control-label col-sm-2" for="month">Month</label>
+			    <div class="col-sm-10"> 
+
+			     	<select class="form-control" id="month">
+			     		<% _.each(months, function(month) { %>
+					  	<option value="<%= month %>"><%= month %></option>
+					  	<% }); %>
+					
+					</select>
 			    </div>
 			  </div>
 			  <div class="form-group"> 
@@ -46,33 +68,30 @@
 		  <!-- Tab panes -->
 		  <div class="tab-content">
 		    <div role="tabpanel" class="tab-pane active in fade" id="my-chimes">
-		    	
-		    	<% _.each(chimes, function(chime) { %>
-		    
-		    		<div class="panel panel-default">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">
-					    	<%= chime.title %>
-					    	<span class="panel-date pull-right">
-					    		<%= chime.time %>
-					    	</span>
-					    </h3>
-					  </div>
-					  <div class="panel-body">
-					    <%= chime.description %>
-					  </div>
-
-					  <div class="panel-footer">
-					  	<div class="chime-author pull-left">
-					  		<i class="fa fa-user"></i> <%= chime.first_name  + ' ' + chime.last_name %> 
-					  	</div>
-					  	<div class="join-chime">
-					  		<button>Join</button>
-					  	</div>
-					  </div>
-					</div>
-		    	<% }); %>
-
+		    	<ul class="event-list">
+			    	<% _.each(chimes, function(chime) { %>
+			    		<li>
+							<time datetime="2014-07-20">
+								<span class="day"><%= chime.day %></span>
+								<span class="month"><%= chime.month %></span>
+								<span class="year">2015</span>
+								<span class="time">time</span>
+							</time>
+							<img alt="Independence Day" src="https://farm4.staticflickr.com/3100/2693171833_3545fb852c_q.jpg" />
+							<div class="info">
+								<h2 class="title"><%= chime.title %></h2>
+								<p class="desc"><%= chime.description.substring(0, 80) + '...' %></p>
+							</div>
+							<div class="social">
+								<ul>
+									<li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
+									<li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
+									<li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
+								</ul>
+							</div>
+						</li>
+			    	<% }); %>
+		    	</ul>
 		    </div>
 		    <div role="tabpanel" class="tab-pane fade" id="friends">
 
@@ -152,7 +171,7 @@
 
 </div>
 
-<div class="col-sm-3">
+<div class="col-sm-4">
 	<div class="row">
 		<div class="content-label">
 			<h4>Chimes you are attending</h4>

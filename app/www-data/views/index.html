@@ -1,156 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Meeting up has never been easier">
-    <meta name="author" content="GeeksLabs + AG">
-    <meta name="keyword" content="meetups, events, planning">
-    <link rel="shortcut icon" href="">
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Chime • In</title>
+		<meta name="description" content="Let others know what event you are attending, and give them the option to join!" />
+		<meta name=viewport content="width=device-width, initial-scale=1" />
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../static/css/main.css" />
 
-    <title>Chime • In</title>
+		<!-- JS & REQUIRE -->
+		<script data-main="../static/scripts/main" src="../static/scripts/require.js"></script>
+		
+	</head>
 
-    <!-- Bootstrap CSS -->    
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <!-- bootstrap theme -->
-    <link href="../static/css/bootstrap-theme.css" rel="stylesheet">
-    <!--external css-->
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+		    <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+					MENU
+					</button>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">
+						<span class="brand-yellow">Chime</span> • <span class="brand-blue">In</span>
+					</a>
+				</div>
 
-    <!-- font icon -->
-    <link href="../static/css/elegant-icons-style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />  
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+					<form class="navbar-form navbar-left" method="GET" role="search">
+						<div class="form-group">
+							<input type="text" name="q" class="form-control" placeholder="Search">
+						</div>
+						<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown ">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								Account
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li class="dropdown-header">SETTINGS</li>
+								<li class=""><a href="#">Other Link</a></li>
+								<li class=""><a href="#">Other Link</a></li>
+								<li class=""><a href="#">Other Link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>  	
+			<div class="container-fluid main-container">
+		  	<div class="col-md-2 sidebar">
+		  	<div class="row">
+			<!-- uncomment code for absolute positioning tweek see top comment in css -->
+			<div class="absolute-wrapper"> </div>
+			<!-- Menu -->
+			<div class="side-menu">
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- Main Menu -->
+					<div class="side-menu-container">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Home</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-cloud"></span> []</a></li>
 
-    <!-- Custom styles -->
-	<link href="../static/css/widgets.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
-    <link href="../static/css/style-responsive.css" rel="stylesheet" />
-	<link href="../static/css/xcharts.min.css" rel=" stylesheet">	
-	<link href="../static/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/main.css" />
+							<!-- Dropdown-->
+							<li class="panel panel-default" id="dropdown">
+								<a data-toggle="collapse" href="#dropdown-lvl1">
+									<span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
+								</a>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-    <!--[if lt IE 9]>
-      <script src="../static/scripts/lib/html5shiv.js"></script>
-      <script src="../static/scripts/lib/respond.min.js"></script>
-      <script src="../static/scripts/lib/lte-ie7.js"></script>
-    <![endif]-->
-  </head>
+								<!-- Dropdown level 1 -->
+								<div id="dropdown-lvl1" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="#">Link</a></li>
+											<li><a href="#">Link</a></li>
+											<li><a href="#">Link</a></li>
 
-  <body>
+											<!-- Dropdown level 2 -->
+											<li class="panel panel-default" id="dropdown">
+												<a data-toggle="collapse" href="#dropdown-lvl2">
+													<span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+												</a>
+												<div id="dropdown-lvl2" class="panel-collapse collapse">
+													<div class="panel-body">
+														<ul class="nav navbar-nav">
+															<li><a href="#">Link</a></li>
+															<li><a href="#">Link</a></li>
+															<li><a href="#">Link</a></li>
+														</ul>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
 
-  <!-- container div start -->
-  <div id="container" class="">
-      <header class="header dark-bg">
-            <div class="toggle-nav">
-                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-            </div>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</nav>
 
-            <!--logo start-->
-            <a href="/" class="logo">Chime <span class="lite">In</span></a>
-            <!--logo end-->
-
-            <div class="nav search-row" id="top_menu">
-                <!--  search form start -->
-                <ul class="nav top-menu">                    
-                    <li>
-                        <form class="navbar-form">
-                            <input class="form-control" placeholder="Search chimes..." type="text">
-                        </form>
-                    </li>                    
-                </ul>
-                <!--  search form end -->                
-            </div>
-
-            <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
-                <ul class="nav pull-right top-menu">
-                    
-                    <!-- task notificatoin start -->
-                    <li id="task_notificatoin_bar" class="dropdown">
-                        
-                    </li>
-                    <!-- task notificatoin end -->
-                    <!-- inbox notificatoin start-->
-                    <li id="mail_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                           
-                            <span class="badge bg-important"></span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            
-                        </ul>
-                    </li>
-                    <!-- inbox notificatoin end -->
-                    <!-- alert notification start-->
-                    <li id="alert_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+			</div>
+		</div>  		</div>
 
 
-                            <span class="badge bg-important"></span>
-                        </a>
-                        <ul class="dropdown-menu extended notification">
-                           
-                        </ul>
-                    </li>
-                    <!-- alert notification end-->
+  		<div class="col-md-10 content">	
+  			<div id="main">
+				<%= content %>
+			</div>
+  			 
+  		</div>
+		  		
+		</div>
 
-                    <!-- user login dropdown start-->
-                    <li class="dropdown2">
-                        <a data-toggle="" class="dropdown-toggle2" href="#">
-                            <span class="profile-ava">
-                                <i class="fa fa-user"></i>
-                            </span>
-                            <span class="username">Bill Billiams III</span>
-                            <b class="caret2"></b>
-                        </a>
-                        
-                    </li>
-                    <!-- user login dropdown end -->
+		<footer>
+			Terms Of Use • Privacy Policy • &copy; 2015
+		</footer>
+	</body>
 
-                </ul>
-                <!-- notificatoin dropdown end-->
-            </div>
-      </header>      
-      <!--header end-->
 
-      <!--sidebar start-->
-      <div>
-
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="/">
-                          <span>Home</span>
-                      </a>
-                  </li>    
-                  <li class="sidebar-menu">
-                      <a class="" href="#" onclick="alert('coming soon!');return false;">
-                          <span>Profile</span>
-                      </a>
-                  </li>
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </div>
-      <!--sidebar end-->
-      
-      <div id="main">
-        
-        <%= content %>
-        
-      </div>
-  </div>
-  <footer>
-            Terms Of Use • Privacy Policy • &copy; 2015
-        </footer>
-
-    <!-- scripts -->
-    <!-- JS & REQUIRE -->
-    <script data-main="../static/scripts/main" src="../static/scripts/require.js"></script>
-    
-    <script type="text/javascript">
-    </script> 
-    
-  </body>
 </html>

@@ -58,14 +58,15 @@ exports.addChime = function(data, next) {
 	  }
 
 	  var title = data.title;
-	  var time = data.time;
+	  var day = data.day;
+	  var month = data.month;
 	  var description = data.description;
 
 	  user = 1; //everyone is bill, bill is love - bill is life.
 
 	  //insert new chime
-	  client.query('INSERT INTO chimes (title, time, description) values ($1::text, $2::text, $3::text) RETURNING id', 
-	  	[title, time, description], function(err, result) {
+	  client.query('INSERT INTO chimes (title, day, month, description) values ($1::text, $2::int, $3::text, $4::text) RETURNING id', 
+	  	[title, day, month, description], function(err, result) {
 	    //call `done()` to release the client back to the pool
 	    //done();
 
@@ -122,7 +123,8 @@ exports.getUserChimes = function(user_id, next) {
 	    	curr.first_name = result.rows[i].first_name;
 	    	curr.last_name = result.rows[i].last_name;
 	    	curr.title = result.rows[i].title;
-	    	curr.time = result.rows[i].time;
+	    	curr.day = result.rows[i].day;
+	    	curr.month = result.rows[i].month;
 	    	curr.description = result.rows[i].description;
 
 	    	data.unshift(curr);
