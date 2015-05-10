@@ -44,7 +44,27 @@ app.get('/', function(req, res) {
 
 /** login **/
 app.post('/login', function(req, res) {
-  res.send( "you did it");
+
+  var response = function(data) {
+
+    if(data.success) {
+      auth = true;
+
+      res.json(
+        {
+          "success":data.success,
+          "user_id":data.user_id,
+          "name":data.name
+        });
+  }
+  else {
+    res.status(400).send('Oops! Please double check your log in credentials!');
+  }
+  };
+
+  controller.authenticate(req, res, response);
+
+  //res.send( "you did it");
 });
 
 
@@ -65,7 +85,7 @@ app.get('/main', function(req, res) {
       res.send(null);
     }
 
-    auth = true;
+    //auth = true;
     setTimeout(function(){auth=false;}, 300000);//ten minute timeout
   };
 

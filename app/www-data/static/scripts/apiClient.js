@@ -5,18 +5,19 @@ var test = function() {
 	console.log('success!')
 };
 
-var login = function(callback) {
+var login = function(credentials, callback) {
 	$.ajax({
 		method: "POST",
 		url:'/login',
-		data:{},
+		data:credentials,
 		success:function(data) {
-			window.localStorage.sessionToken = data;
+			window.localStorage.user = data.user_id;
+			window.localStorage.user_full_name = data.name;
 			callback();
 			console.log('logged in');
 		},
-		error:function() {
-			console.log('error')
+		error:function(err) {
+			console.log(err.responseText)
 		}
 	});
 };

@@ -50,6 +50,46 @@ exports.test = function() {
 };
 
 
+/** login authentication **/
+exports.validateUser = function(data, next) {
+
+	pg.connect(connString, function(err, client, done) {
+	  if(err) {
+	    return console.error('error fetching client from pool', err);
+	  }
+
+	  client.query('SELECT * from users where username = $1::text', [data.user], function(err, result) {
+	    //call `done()` to release the client back to the pool
+	    done();
+	    if(err) {
+	      return console.error('error running query', err);
+	    }
+
+	    var user_info = {"success":false}; //default to false
+	
+	    if(result.rows.length > 0) {
+
+	    	if(result.rows[0].password == data.pass) {
+	    		console.log('successful login');
+	    		user_info = {
+	    			"success":true,
+	    			"user_id": result.rows[0].id,
+	    			"name": result.rows[0].first_name + ' ' + result.rows[0].last_name
+	    		};	
+	    	}
+
+	    }
+
+	    next(user_info);
+
+	    //console.log(result.rows[0].number);
+	    //output: 1
+	  });
+	});
+};
+
+
+
 exports.addChime = function(data, next) {
 
 	pg.connect(connString, function(err, client, done) {

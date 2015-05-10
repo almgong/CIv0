@@ -48,6 +48,7 @@ require(['jquery', 'bb'], function($, BB) {
 		 ***/
 		 $(function() {
 		 	appViews.loadMainPageViews();
+		 	appViews.bindLoginEvents();
 
 
 			/***

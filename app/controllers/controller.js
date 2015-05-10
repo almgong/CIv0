@@ -11,11 +11,23 @@ getMain(callback) //returns data for the main dashboard (right now just user's c
 
 var exports = module.exports;
 
+exports.authenticate = function(req, res, next) {
+
+	var response = function(data) {
+		next(data);
+	};
+
+	model.validateUser(req.body, response);
+};
+
 exports.addChime = function(req, res, next) {
 
 	var response = function(success) {
 		if(success) {
 			next(200, {});
+		}
+		else {
+			next(400, {});
 		}
 	};
 
